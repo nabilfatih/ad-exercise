@@ -181,30 +181,30 @@ void HeapSort(int a[], int low, int high)
 
 int main()
 {
-    int a[] = {5, 5, 3, 8, 4, 2, 7, 1, 10, 12, 14, 16, 0, -1};
-    QuickSort(a, 0, 13);
+    int a[] = {-5, 13, -32, 7, -3, 17, 23, 12, -35, 19};
+    QuickSort(a, 0, 9);
     cout << "Quick Sort: ";
-    for (int i = 0; i < 14; i++)
+    for (int i = 0; i < 10; i++)
     {
         cout << a[i] << " ";
     }
 
     cout << endl;
 
-    int b[] = {5, 5, 3, 8, 4, 2, 7, 1, 10, 12, 14, 16, 0, -1};
-    MergeSort(b, 0, 13);
+    int b[] = {-5, 13, -32, 7, -3, 17, 23, 12, -35, 19};
+    MergeSort(b, 0, 9);
     cout << "Merge Sort: ";
-    for (int i = 0; i < 14; i++)
+    for (int i = 0; i < 10; i++)
     {
         cout << b[i] << " ";
     }
 
     cout << endl;
 
-    int c[] = {5, 5, 3, 8, 4, 2, 7, 1, 10, 12, 14, 16, 0, -1};
-    HeapSort(c, 0, 13);
+    int c[] = {-5, 13, -32, 7, -3, 17, 23, 12, -35, 19};
+    HeapSort(c, 0, 9);
     cout << "Heap Sort: ";
-    for (int i = 0; i < 14; i++)
+    for (int i = 0; i < 10; i++)
     {
         cout << c[i] << " ";
     }
