@@ -110,7 +110,7 @@ void MergeSort(int a[], int low, int high)
     }
 }
 
-void MinHeapify(int a[], int low, int high, int root)
+void MinHeap(int a[], int low, int high, int root)
 {
     int smallest = root;
     int left = 2 * root + 1;
@@ -129,39 +129,43 @@ void MinHeapify(int a[], int low, int high, int root)
     if (smallest != root)
     {
         swap(a[root], a[smallest]);
-        MinHeapify(a, low, high, smallest);
+        MinHeap(a, low, high, smallest);
     }
 }
 
-void MaxHeapify(int a[], int low, int high, int root)
+void MaxHeap(int a[], int low, int high, int root)
 {
     int largest = root;
     int left = 2 * root + 1;
     int right = 2 * root + 2;
 
+    // If left child is larger than root
     if (left <= high && a[left] > a[largest])
     {
         largest = left;
     }
 
+    // If right child is larger than root
     if (right <= high && a[right] > a[largest])
     {
         largest = right;
     }
 
+    // If largest is not root
     if (largest != root)
     {
         swap(a[root], a[largest]);
-        MaxHeapify(a, low, high, largest);
+        // Why need recursive call here? Because we need to make sure the subtree is also a max heap
+        MaxHeap(a, low, high, largest);
     }
 }
 
 void BuildHeap(int a[], int low, int high)
 {
+    // Why (high - 1) / 2? Because the last element is at index high, so the parent of the last element is at index (high - 1) / 2
     for (int i = (high - 1) / 2; i >= low; i--)
     {
-        cout << i << endl;
-        MaxHeapify(a, low, high, i);
+        MaxHeap(a, low, high, i);
     }
 }
 
@@ -170,8 +174,8 @@ void HeapSort(int a[], int low, int high)
     BuildHeap(a, low, high);
     for (int i = high; i >= low; i--)
     {
-        swap(a[low], a[i]);
-        MaxHeapify(a, low, i - 1, low);
+        swap(a[low], a[i]);          // swap the root with the last element
+        MaxHeap(a, low, i - 1, low); // make sure the heap is still a max heap
     }
 }
 
