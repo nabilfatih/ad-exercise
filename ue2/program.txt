@@ -1,0 +1,22 @@
+// Initialize R1, R2, and R3 to 0
+INC(R1)  // R1 = 1, to start the loop correctly
+
+// Loop from i = 1 to n (since R1 is already 1)
+LoopStart:
+    // Check if we've reached n
+    DEC(R0)
+    JNZ(R0, EndLoop)  // If R0 is 0, we've reached n and exit the loop
+
+    // Calculate i^3 and store it in R2
+    MUL(R1, R1, R4)  // R4 = i * i
+    MUL(R4, R1, R2)  // R2 = i^3
+
+    // Add i^3 to the sum in R3
+    ADD(R3, R2, R3)  // R3 = R3 +R2
+
+    // Increment i and loop again
+    INC(R1)
+    JNZ(R1, LoopStart)
+
+EndLoop:
+// At this point, R3 contains the sum of cubes from 1 to n
