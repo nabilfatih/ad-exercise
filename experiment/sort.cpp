@@ -286,5 +286,7 @@ int main()
         cout << f[i] << " ";
     }
 
+    cout << endl;
+
     return 0;
 }
