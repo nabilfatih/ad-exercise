@@ -152,6 +152,7 @@ void MaxHeap(int a[], int low, int high, int root)
     }
 
     // If largest is not root
+    // when is
     if (largest != root)
     {
         swap(a[root], a[largest]);
@@ -176,6 +177,52 @@ void HeapSort(int a[], int low, int high)
     {
         swap(a[low], a[i]);          // swap the root with the last element
         MaxHeap(a, low, i - 1, low); // make sure the heap is still a max heap
+    }
+}
+
+void InsertionSort(int a[], int n)
+{
+    for (int i = 1; i < n; i++)
+    {
+        int key = a[i];
+        int j = i - 1;
+        while (j >= 0 && a[j] > key)
+        {
+            // shift the elements to the right
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j + 1] = key;
+    }
+}
+
+void BubbleSort(int a[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (a[j] > a[j + 1])
+            {
+                swap(a[j], a[j + 1]);
+            }
+        }
+    }
+}
+
+void SelectionSort(int a[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        int min = i;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (a[j] < a[min])
+            {
+                min = j;
+            }
+        }
+        swap(a[i], a[min]);
     }
 }
 
@@ -207,6 +254,36 @@ int main()
     for (int i = 0; i < 10; i++)
     {
         cout << c[i] << " ";
+    }
+
+    cout << endl;
+
+    int d[] = {-5, 13, -32, 7, -3, 17, 23, 12, -35, 19};
+    InsertionSort(d, 10);
+    cout << "Insertion Sort: ";
+    for (int i = 0; i < 10; i++)
+    {
+        cout << d[i] << " ";
+    }
+
+    cout << endl;
+
+    int e[] = {-5, 13, -32, 7, -3, 17, 23, 12, -35, 19};
+    BubbleSort(e, 10);
+    cout << "Bubble Sort: ";
+    for (int i = 0; i < 10; i++)
+    {
+        cout << e[i] << " ";
+    }
+
+    cout << endl;
+
+    int f[] = {-5, 13, -32, 7, -3, 17, 23, 12, -35, 19};
+    SelectionSort(f, 10);
+    cout << "Selection Sort: ";
+    for (int i = 0; i < 10; i++)
+    {
+        cout << f[i] << " ";
     }
 
     return 0;
